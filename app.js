@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', routes);
 app.use('/users', users);
 
-mongoose.connect('mongodb://localhost/rereddit');
+mongoose.connect(process.env.MONGOLAB_MAROON_URI || 'mongodb://localhost/rereddit');
 
 app.post('/posts', function(req, res, next) {
   var post = new Post(req.body);
